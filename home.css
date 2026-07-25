@@ -139,6 +139,9 @@ html,body{
 
     cursor:pointer;
 
+    touch-action:manipulation;
+    user-select:none;
+
     transition:.3s;
 
 }
@@ -202,4 +205,22 @@ width:430px;
 
 }
 
+}
+img{
+    -webkit-user-drag:none;
+    user-select:none;
+    -webkit-touch-callout:none;
+    pointer-events:auto;
+}
+/* Move content upward */
+.main-image,
+.collection-title,
+.thumbs {
+    transform: translateY(-10px);
+}
+
+.collection-title {
+    margin-top: 12px;
+    margin-bottom: 0;
+    text-align: center;
 }
