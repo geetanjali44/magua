@@ -1,126 +1,55 @@
-// Change image inside the current page only
-function changeImage(img){
-
+// Change only the big image on the current page
+function changeImage(img) {
     const page = img.closest(".page");
-
     const mainImage = page.querySelector(".main-image img");
 
-    mainImage.src = img.src;
+    mainImage.src = img.getAttribute("src");
 
-    page.querySelectorAll(".thumb").forEach(item=>{
-        item.classList.remove("active");
+    page.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.classList.remove("active");
     });
 
-    img.parentElement.classList.add("active");
+    img.closest(".thumb").classList.add("active");
 }
 
 
-
-// -----------------------------
-
-// Horizontal Swipe
-
-// -----------------------------
-
+// Slider elements
 const slider = document.querySelector(".slider");
-
 const pages = document.querySelectorAll(".page");
 
-let currentPage = 0;
-
-let startX = 0;
-
-let endX = 0;
+// Clear any transform added by the old JavaScript
+slider.style.transform = "";
 
 
-
-slider.addEventListener("touchstart",(e)=>{
-
-    startX = e.touches[0].clientX;
-
-});
-
-
-
-slider.addEventListener("touchmove",(e)=>{
-
-    endX = e.touches[0].clientX;
-
-});
-
-
-
-slider.addEventListener("touchend",()=>{
-
-    let distance = startX - endX;
-
-
-
-    // Swipe Left
-
-    if(distance > 60){
-
-        if(currentPage < pages.length-1){
-
-            currentPage++;
-
-        }
-
+// Optional keyboard support
+document.addEventListener("keydown", (event) => {
+    if (
+        event.key !== "ArrowRight" &&
+        event.key !== "ArrowLeft"
+    ) {
+        return;
     }
 
+    event.preventDefault();
 
+    const pageWidth = slider.clientWidth;
+    const currentPage = Math.round(
+        slider.scrollLeft / pageWidth
+    );
 
-    // Swipe Right
+    const direction =
+        event.key === "ArrowRight" ? 1 : -1;
 
-    if(distance < -60){
+    const nextPage = Math.max(
+        0,
+        Math.min(
+            pages.length - 1,
+            currentPage + direction
+        )
+    );
 
-        if(currentPage > 0){
-
-            currentPage--;
-
-        }
-
-    }
-
-
-
-    slider.style.transform =
-    `translateX(-${currentPage*100}vw)`;
-
-});
-
-
-
-
-// Optional Keyboard Support
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="ArrowRight"){
-
-        if(currentPage < pages.length-1){
-
-            currentPage++;
-
-        }
-
-    }
-
-
-
-    if(e.key==="ArrowLeft"){
-
-        if(currentPage > 0){
-
-            currentPage--;
-
-        }
-
-    }
-
-
-
-    slider.style.transform =
-    `translateX(-${currentPage*100}vw)`;
-
+    slider.scrollTo({
+        left: nextPage * pageWidth,
+        behavior: "smooth"
+    });
 });
