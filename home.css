@@ -1,0 +1,205 @@
+@font-face{
+    font-family:'Azonix';
+    src:url('fonts/Azonix.otf') format('opentype');
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Azonix',sans-serif;
+    background:#f6f1ff;
+}
+
+/* =======================
+   SLIDER
+======================= */
+
+.slider{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+/* =======================
+   PAGE
+======================= */
+
+.page{
+
+    min-width:100vw;
+    width:100vw;
+    height:100vh;
+
+    flex-shrink:0;
+
+    scroll-snap-align:start;
+
+    background:linear-gradient(180deg,#680360ad,#fcb4fe,#ffffff);
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+/* =======================
+   MAIN IMAGE
+======================= */
+
+.main-image{
+
+    width:100%;
+    height:75vh;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.main-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.35s;
+
+}
+
+/* =======================
+   THUMBNAILS
+======================= */
+
+.thumbs{
+
+    width:100%;
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+}
+
+.thumb{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.thumb img{
+
+    width:100%;
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    border:3px solid transparent;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.thumb.active img{
+
+    border-color:#6d28d9;
+
+}
+
+.thumb img:active{
+
+    transform:scale(.95);
+
+}
+
+.thumb p{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#0f0f0f;
+
+    text-shadow:0 2px 4px rgba(0,0,0,.25);
+
+}
+
+/* =======================
+   DESKTOP
+======================= */
+
+@media(min-width:431px){
+
+body{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#ddd;
+
+}
+
+.slider{
+
+width:430px;
+max-width:430px;
+height:100vh;
+
+border-radius:0;
+
+}
+
+.page{
+
+min-width:430px;
+width:430px;
+
+}
+
+}
