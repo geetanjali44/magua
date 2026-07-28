@@ -217,7 +217,7 @@ img{
 .main-image,
 .collection-title,
 .thumbs {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
 }
 
 .collection-title {
