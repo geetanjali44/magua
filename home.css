@@ -224,3 +224,16 @@ img{
     margin-bottom: 0;
     text-align: center;
 }
+/* Keep zoom inside the big-image box */
+.main-image {
+    position: relative;
+    overflow: hidden;
+    touch-action: pan-x;
+}
+
+.main-image img {
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: center;
+    will-change: transform;
+    transition: transform 0.2s ease;
+}
