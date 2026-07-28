@@ -222,3 +222,14 @@ document.addEventListener("keydown", (event) => {
         behavior: "smooth"
     });
 });
+window.addEventListener("load", () => {
+    const loader = document.getElementById("pageLoader");
+
+    setTimeout(() => {
+        loader.classList.add("hide");
+
+        setTimeout(() => {
+            loader.remove();
+        }, 400);
+    }, 2000);
+});
