@@ -16,7 +16,7 @@ html,body{
     height:100%;
     overflow:hidden;
     font-family:'Azonix',sans-serif;
-    background:white;
+    background:#5e3984;
 }
 
 /* =======================
@@ -264,9 +264,7 @@ img{
 
     background: linear-gradient(
         180deg,
-        #680360,
-        #fcb4fe,
-        #ffffff
+        #5e3984
     );
 
     opacity: 1;
